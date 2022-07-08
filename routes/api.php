@@ -16,6 +16,6 @@ use App\Http\Controllers\Api\CategoriesController;
 */
 
 
-Route::group(['middleware'=>'api'],function (){
+Route::group(['middleware'=>['api','checkPassword','changeLanguage']],function (){
     Route::post('get-main-category',[CategoriesController::class,'index']);
 });
