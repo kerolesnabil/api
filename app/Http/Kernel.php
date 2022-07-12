@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AssignGuard;
 use App\Http\Middleware\Changelanguage;
 use App\Http\Middleware\CheckPassword;
+use App\Http\Middleware\CkeckAdminToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -25,6 +27,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         CheckPassword::class,
         Changelanguage::class,
+        AssignGuard::class,
     ];
 
     /**
@@ -69,5 +72,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkPassword'=>CheckPassword::class,
         'changeLanguage'=>Changelanguage::class,
+        'auth.guard'=>AssignGuard::class
     ];
 }
